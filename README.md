@@ -32,6 +32,8 @@ Edit this document to include your answers after each question. Make sure to lea
 
 2. What is the difference between a function and a method?
 
+> Methods are built in functions.
+
 3. What is closure?
 
 4. Describe the four rules of the 'this' keyword.
