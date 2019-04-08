@@ -6,29 +6,53 @@
   object name, diet, weight, length, period
 */
 
-// tyrannosaurus, carnivorous, 7000kg, 12m, Late Cretaceious
+// tyrannosaurus, carnivorous, 7000kg, 12m, late cretaceious
+const tyrannosaurus = {
+  name: "tyrannosaurus",
+  diet: "carnivorous",
+  weight: "7000kg",
+  length: "12m",
+  period: "late cretaceious",
+  roar: function (params) {
+    return `RAWERSRARARWERSARARARRRR!`
+  }
+}
 
 // stegosaurus, herbivorous, 2000kg, 9m, Late Jurassic
+const stegosaurus= {
+  name: "stegosaurus",
+  diet: "herbivorous",
+  weight: "2000kg",
+  length: "9m",
+  period: "late Jurassic"
+}
 
 // velociraptor, carnivorous, 15kg, 1.8m, Late Cretaceious
+const velociraptor= {
+  name: "velociraptor",
+  diet: "carnivorous",
+  weight: "15kg",
+  length: "1.8m",
+  period: "late Cretaceious"
+}
 
 // Using your dinosaur objects, log answers to these questions:
 
 // How much did tyrannosaurus weigh?
-console.log();
+console.log(tyrannosaurus.weight);
 
 // What was the diet of a velociraptor?
-console.log();
+console.log(velociraptor.diet);
 
 // How long was a stegosaurus?
-console.log();
+console.log(stegosaurus.length);
 
 // What time period did tyrannosaurus live in?
-console.log();
+console.log(tyrannosaurus.period);
 
 
 // Create a new roar method for the tyrannosaurus.  When called, return "RAWERSRARARWERSARARARRRR!" Log the result.
-console.log();
+console.log(tyrannosaurus.roar());
 
 
 // ==== Arrays ====
@@ -50,6 +74,16 @@ const graduates = [{"id":1,"first_name":"Cynde","university":"Missouri Southern 
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
 const universities = [];
+
+let studentSchool = function () {
+  for (let index = 0; index < graduates.length; index++) {
+    universities.push(graduates[index].university)
+  }
+  universities.sort()
+}
+
+studentSchool()
+
 console.log(universities)
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. 
@@ -59,12 +93,32 @@ Name email@example.com
 
 Log the result of your new array. */
 const contactInfo = [];
+
+let studentContact = function () {
+  for (let index = 0; index < graduates.length; index++) {
+    contactInfo.push(`${graduates[index].first_name} ${graduates[index].email}`)
+  }
+}
+
+studentContact()
+
 console.log(contactInfo);
 
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
 const uni = [];
-console.log(uni);
+
+let studentUni = function (str, strArray) {
+  for (let index = 0; index < strArray.length; index++) {
+    if(strArray[index].match(str)) {
+      uni.push(strArray[index])
+    }
+  }
+}
+
+studentUni('Uni', universities)
+
+console.log(uni)
 
 
 // ==== ADVANCED Array Methods ====
@@ -89,32 +143,53 @@ The zoo wants to display both the scientific name and the animal name in front o
 
 */
 const animalNames = [];
+
+zooAnimals.forEach(element => {
+  return animalNames.push(`Name: ${element.animal_name}, Scientific: ${element.scientific_name}`)
+})
 console.log(animalNames);
 
-/* Request 2: .map()    
+/* Request 2: .map()
 
 The zoos need a list of all their animal's names (names only, not scientific) converted to lower case.  Create a new array named lowerCase and map over each name to convert them all to lower case.  Log the resut.
 
 */
 
 const lowerCase = [];
-console.log(lowerCase); 
+
+zooAnimals.forEach(element => {
+  return lowerCase.push(`${element.animal_name.toLowerCase()}`)
+})
+
+console.log(lowerCase);
 
 /* Request 3: .filter() 
 
 The zoos are concenred about animals with a lower population count. Find out which animals have a population less than 5.
 
 */
+
 const largerPopulation = [];
-console.log(largerPopulation);
+
+let whoNotFuckin = function () {
+  largerPopulation.push(zooAnimals.filter(element => element.population < 5))
+}
+
+whoNotFuckin()
+
+console.log(largerPopulation)
 
 /* Request 4: .reduce() 
 
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
-console.log(populationTotal);
+
+
+// ASK NATE WHY THIS WORKS
+const populationTotal = zooAnimals.reduce((acc, number) => acc + number.population, 0)
+
+console.log(populationTotal)
 
 
 /* 
